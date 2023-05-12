@@ -13,7 +13,7 @@
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.12.3",
-    "@mui/x-data-grid": "^5.17.24",
+    "@mui/x-data-grid": "^5.17.26",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/auth0": "^2.35.9",
     "dependencies": "^0.0.1",
