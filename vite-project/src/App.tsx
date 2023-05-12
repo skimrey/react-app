@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import routes from './config/routes'
 import Navbar from './components/navbar'
+import { Provider } from 'react-redux'
 
 function App() {
 

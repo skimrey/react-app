@@ -1,46 +1,40 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
+import React from 'react'
 import ContactForm from './ContactForm';
 
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-
 type Props = {
+    id?: string[];
     open: boolean;
     onClose: () => void;
 }
 
-export default function BasicModal(props: Props) {
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-  
+const Modal = ( props: Props ) => {
+    if ( !props.open ) return (<></>);
     return (
-      <div>
-        <Button onClick={handleOpen}>Create New contact</Button>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
+        <div 
+            onClick={ props.onClose } 
+            className='fixed w-full h-full flex overflow-auto z-1 
+            justify-center align-middle bg-gray-300 bg-opacity-25'
         >
-          <Box sx={style}>
-            <ContactForm></ContactForm>
-          </Box>
-        </Modal>
-      </div>
-    );
-  }
+            <div
+                className='max-w-600px w-2/5 fixed flex z-1 mt-20 bg-white shadow-xl rounded'
+                onClick={(e) => {
+                    e.stopPropagation()
+                }}    
+            >
+                <div className="w-full flex flex-col">
+                    <div className="flex flex-row space-apart">
+                        <p className="flex justify-start m-3 bg-slate-300 p-2 rounded hover:bg-slate-800 text-white"
+                        onClick={props.onClose}>
+                            X
+                        </p>
+                    </div>
+                    <div className="flex flex-col items-center text-center mt-3 p-2">
+                        <ContactForm id={ props.id }/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
 
+export default Modal
