@@ -1,8 +1,8 @@
-let token = '3898faeb3b3aace81f0daee0d95c0c11b9b36b33917ba64e'
+let token = '1ba724c4096b149478555307802ea5dc690419db9f432377'
 
 export const server_calls = {
     get: async () => {
-        const response = await fetch(`http://candied-snapdragon-grouse.glitch.me/api/cars`,{
+        const response = await fetch(`http://cooked-funky-teller.glitch.me/api/books`,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ export const server_calls = {
     },
 
     create: async(data: any = {}) => {
-        const response = await fetch(`http://candied-snapdragon-grouse.glitch.me/api/cars`,{
+        const response = await fetch(`http://cooked-funky-teller.glitch.me/api/books/${id}`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -34,8 +34,8 @@ export const server_calls = {
         return await response.json()
     },
     update: async (id:string, data:any = {}) => {
-        const response = await fetch(`http://candied-snapdragon-grouse.glitch.me/api/cars/${id}`, {
-            method: 'POST',
+        const response = await fetch(`http://cooked-funky-teller.glitch.me/api/books/${id}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
                 'x-access-token': `Bearer ${token}`
@@ -44,7 +44,7 @@ export const server_calls = {
         });
     },
     delete: async(id:string) => {
-        const response = await fetch(`http://candied-snapdragon-grouse.glitch.me/api/cars/${id}`,{
+        const response = await fetch(`http://cooked-funky-teller.glitch.me/api/books/${id}`,{
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
