@@ -7,7 +7,7 @@ interface ButtonProps {
 
 export default function Button ( props: ButtonProps ) {
     return (
-        <button onClick={ props.onClick } className={ props.className }>
+        <button id="button" onClick={ props.onClick } className={ props.className }>
             { props.children }
         </button>
     )
