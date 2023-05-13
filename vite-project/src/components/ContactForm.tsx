@@ -4,36 +4,39 @@ import Button from '@mui/material/Button';
 import { useForm } from 'react-hook-form';
 import { server_calls } from '../api/server';
 import { useDispatch, useStore } from 'react-redux';
-import { chooseName, chooseEmail, chooseAddress, choosePhone } from '../redux/slices/RootSlice'; 
+import { chooseName, chooseEmail, chooseAddress, choosePhone } from '../redux/slices/RootSlice';
 
 interface ContactFormProps {
-  id?: string,
-  data?: {}
+  id?: string[]
 }
 
 const ContactForm = (props:ContactFormProps) => {
   const { register, handleSubmit } = useForm({})
   const dispatch = useDispatch();
-  const store =  useStore();
+  const store = useStore();
 
-  const onSubmit = (data: any, event: any ) => {
-    console.log(`ID: ${props.id}`);
-    if (props.id) {
-      server_calls.update(props.id!, data)
-      console.log(`Updated: ${data} ${props.id}`)
-      setTimeout(() => {window.location.reload(), 1000});
+  const onSubmit = (data: any, event: any) => {
+    console.log(`ID: ${typeof props.id}`);
+    console.log(props.id)
+    console.log(data)
+    if (props.id && props.id.length > 0) {
+      server_calls.update(props.id[0], data)
+      console.log(`Updated: ${ data.make } ${ props.id }`)
+      setTimeout(() => {window.location.reload()}, 500);
       event.target.reset()
     } else {
-      // use dispatch to update our state in our store
-      dispatch(chooseName(data.title));
-      dispatch(chooseEmail(data.author));
-      dispatch(choosePhone(data.pages));
-      dispatch(chooseAddress(data.cover));
+      // Use dispatch to update our state in our store
+      dispatch(chooseName(data.make));
+      dispatch(chooseEmail(data.model));
+      dispatch(choosePhone(data.serial));
+      dispatch(chooseAddress(data.year));
 
       server_calls.create(store.getState())
-      setTimeout(() => {window.location.reload(), 1000});
+      setTimeout( () => {window.location.reload()}, 500);
     }
+    
   }
+
   
   return (
 
@@ -41,28 +44,28 @@ const ContactForm = (props:ContactFormProps) => {
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <label htmlFor="title">
-            title
+          <label htmlFor="make">
+            make
           </label>
-          <Input {...register('title')} name='title' placeholder="Title"></Input>
+          <Input {...register('make')} name='make' placeholder="Make"></Input>
         </div>
         <div>
-          <label htmlFor="author">
-            author
+          <label htmlFor="model">
+            model
           </label>
-          <Input {...register('author')} name='author' placeholder="Author"></Input>
+          <Input {...register('model')} name='model' placeholder="model"></Input>
         </div>
         <div>
-          <label htmlFor="pages">
-            pages
+          <label htmlFor="year">
+          year
           </label>
-          <Input {...register('pages')} name='pages' placeholder="Pages"></Input>
+          <Input {...register('year')} name='year' placeholder="Year"></Input>
         </div>
         <div>
-          <label htmlFor="cover">
-            cover
+          <label htmlFor="serial">
+            serial
           </label>
-          <Input {...register('cover')} name='cover' placeholder="Cover"></Input>
+          <Input {...register('serial')} name='serial' placeholder="Serial"></Input>
         </div>
         <div className="flex p-1">
           <Button className="flex justify-start m-3 bg-slate-300 p-2 rounded hover:bg-slate-800 text-white">

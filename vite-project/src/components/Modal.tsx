@@ -7,7 +7,6 @@ import ContactForm from './ContactForm';
 import { server_calls } from '../api/server';
 import { useGetData } from '../custom-hooks/FetchData';
 
-
 const style = {
   position: 'absolute' as 'absolute',
   top: '50%',
@@ -21,7 +20,7 @@ const style = {
 };
 
 type Props = {
-    id?: string[];
+    id: string[];
     open: boolean;
     onClose: () => void;
 }
@@ -32,10 +31,11 @@ export default function BasicModal(props: Props) {
     const handleClose = () => setOpen(false);
     const [ selectionModel, setSelectionModel ] = useState<string[]>([])
     const { contactData, getData } = useGetData();
+
     const deleteData = () => {
-      server_calls.delete(selectionModel[0]);
+      server_calls.delete(props.id);
       getData();
-      console.log(`Selection model: ${selectionModel}`)
+      console.log(`Selection model: ${props.id}`)
       setTimeout( () => { window.location.reload() }, 500)
     }
     return (
@@ -48,7 +48,7 @@ export default function BasicModal(props: Props) {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            <ContactForm></ContactForm>
+            <ContactForm id={props.id}></ContactForm>
           </Box>
         </Modal>
         <Button onClick={handleOpen}>Update</Button>
@@ -59,10 +59,11 @@ export default function BasicModal(props: Props) {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            <ContactForm></ContactForm>
+            <ContactForm id={props.id}></ContactForm>
           </Box>
         </Modal>
         <Button onClick={deleteData}>Delete</Button>
       </div>
+      
     );
   }

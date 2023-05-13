@@ -3,17 +3,17 @@ import { createSlice } from "@reduxjs/toolkit"
 const rootSlice = createSlice({
     name: "root",
     initialState: {
-        title: "Title",
-        author: 'Author',
-        cover: "Cover",
-        pages: "Pages",
+        make: "Make",
+        model: "Model",
+        year: "Year",
+        serial: "Serial",
     },
     reducers: {
         // action is submitted elsewhere - written to state.name
-        chooseName: (state, action) => { state.title = action.payload }, // All we're doing is setting the input to the state.name
-        chooseEmail: (state, action) => { state.author = action.payload },
-        choosePhone: (state, action) => { state.cover = action.payload },
-        chooseAddress: (state, action) => { state.pages = action.payload },
+        chooseName: (state, action) => { state.make = action.payload }, // All we're doing is setting the input to the state.name
+        chooseEmail: (state, action) => { state.model = action.payload },
+        choosePhone: (state, action) => { state.year = action.payload },
+        chooseAddress: (state, action) => { state.serial = action.payload },
     }
 })
 

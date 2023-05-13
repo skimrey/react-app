@@ -8,10 +8,10 @@ import { useGetData } from '../custom-hooks/FetchData';
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: "ID", width: 90, hide: true },
-  { field: 'title', headerName: 'Contact Name', flex: 1 },
-  { field: 'author', headerName: 'Email', flex: 1},
-  { field: 'pages', headerName: 'Phone Number', flex: 1},
-  { field: 'cover', headerName: 'Address', flex: 2}
+  { field: 'make', headerName: 'Contact Name', flex: 1 },
+  { field: 'model', headerName: 'Email', flex: 1},
+  { field: 'year', headerName: 'Phone Number', flex: 1},
+  { field: 'serial', headerName: 'Address', flex: 2}
 ]
 
 function DataTable() {
@@ -38,20 +38,9 @@ function DataTable() {
     setOpen(false)
   }
 
-  const deleteData = () => {
-    server_calls.delete(selectionModel[0]);
-    getData();
-    console.log(`Selection model: ${selectionModel}`)
-    setTimeout( () => { window.location.reload() }, 500)
-  }
 
   return (
     <>
-        <BasicModal 
-            id={selectionModel}
-            open={open}
-            onClose={handleClose}
-        />
         
         <div className={ open ? "hidden" : "container mx-10 my-5 flex flex-col"}
           style={{ height: 400, width: '100%' }}
@@ -62,7 +51,13 @@ function DataTable() {
             setSelectionModel(item)
             }}
             />
+            
         </div>
+        <BasicModal 
+            id={selectionModel}
+            open={open}
+            onClose={handleClose}
+        />
     </>
   )
 }
