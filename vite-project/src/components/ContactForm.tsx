@@ -25,10 +25,10 @@ const ContactForm = (props:ContactFormProps) => {
       event.target.reset()
     } else {
       // use dispatch to update our state in our store
-      dispatch(chooseName(data.name));
-      dispatch(chooseEmail(data.email));
-      dispatch(choosePhone(data.phone_number));
-      dispatch(chooseAddress(data.address));
+      dispatch(chooseName(data.title));
+      dispatch(chooseEmail(data.author));
+      dispatch(choosePhone(data.pages));
+      dispatch(chooseAddress(data.cover));
 
       server_calls.create(store.getState())
       setTimeout(() => {window.location.reload(), 1000});
@@ -41,28 +41,28 @@ const ContactForm = (props:ContactFormProps) => {
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <label htmlFor="name">
-            contact name
+          <label htmlFor="title">
+            title
           </label>
-          <Input {...register('name')} name='name' placeholder="Name"></Input>
+          <Input {...register('title')} name='title' placeholder="Title"></Input>
         </div>
         <div>
-          <label htmlFor="email">
-            email
+          <label htmlFor="author">
+            author
           </label>
-          <Input {...register('email')} name='email' placeholder="Email"></Input>
+          <Input {...register('author')} name='author' placeholder="Author"></Input>
         </div>
         <div>
-          <label htmlFor="phone_number">
-            contact name
+          <label htmlFor="pages">
+            pages
           </label>
-          <Input {...register('phone_number')} name='phone_number' placeholder="Phone Number"></Input>
+          <Input {...register('pages')} name='pages' placeholder="Pages"></Input>
         </div>
         <div>
-          <label htmlFor="address">
-            address
+          <label htmlFor="cover">
+            cover
           </label>
-          <Input {...register('address')} name='address' placeholder="Address"></Input>
+          <Input {...register('cover')} name='cover' placeholder="Cover"></Input>
         </div>
         <div className="flex p-1">
           <Button className="flex justify-start m-3 bg-slate-300 p-2 rounded hover:bg-slate-800 text-white">

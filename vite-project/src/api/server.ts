@@ -35,7 +35,7 @@ export const server_calls = {
     },
     update: async (id:string, data:any = {}) => {
         const response = await fetch(`http://cooked-funky-teller.glitch.me/api/books/${id}`, {
-            method: 'PUT',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'x-access-token': `Bearer ${token}`
