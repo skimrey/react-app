@@ -8,9 +8,13 @@ import { auth, Providers } from '../config/firebase'
 
 function Navbar() {
     const [isVisible, setIsVisible] = useState(false)
+    function delay(ms: number) {
+      return new Promise( resolve => setTimeout(resolve, ms) );
+  }
   
-    const signOutOnClick = () => {
+    const signOutOnClick = async () => {
       signOut(auth)
+      await delay(100);
       location.reload();
     }
 
@@ -21,7 +25,7 @@ function Navbar() {
       }
     }
 
-    const dropDown = () => {
+    const dropDown = async () => {
       setIsVisible(!isVisible)
     }
   
@@ -32,7 +36,7 @@ function Navbar() {
     return (
       <nav className='flex items-center justify-between flex-wrap bg-teal-500 p-6'>
           <div className='flex items-center flex-shrink-0 text-white mr-6'>
-              <Link to='/' className='font-semibold text-xl tracking-tight'>Digit</Link>
+              <Link to='/' className='font-semibold text-xl tracking-tight'>Park It</Link>
           </div>
           <div className="block">
               <button 
@@ -44,8 +48,8 @@ function Navbar() {
               </button>
           </div>
           { isVisible ? ( 
-            <div className='w-full block flex-grow items-center '>
-                <div className="text-sm lg:flex-grow">
+            <div className='w-full block '>
+                <div className="text-sm right-0 ">
                     
                         <Button className="p-3 m-1 bg-teal-400 justify-center">
                             <div>
@@ -53,11 +57,7 @@ function Navbar() {
                             </div>
                         </Button>
                         
-                        <Button className="p-3 m-1 bg-teal-400 justify-center">
-                            <div>
-                            <Link to='/about' onClick={clicked} className='flex place-items-center lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4'>About</Link>
-                            </div>
-                        </Button>
+                        
                         
                         {
                           auth.currentUser ?
@@ -72,7 +72,7 @@ function Navbar() {
                         {
                           !auth.currentUser ? 
 
-                          <Button className='p-3 m-1 bg-teal-400 justify-center'> 
+                          <Button className='p-3 m-1  bg-teal-400'> 
                             <div>
                               <Link to="/" onClick={ () => {signInOnClick()}} className="flex place-items-center lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
                                 Login

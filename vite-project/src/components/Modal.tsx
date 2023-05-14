@@ -40,7 +40,7 @@ export default function BasicModal(props: Props) {
     }
     return (
       <div>
-        <Button onClick={handleOpen}>Create New contact</Button>
+        <Button onClick={handleOpen}>Create New Car</Button>
         <Modal
           open={open}
           onClose={handleClose}

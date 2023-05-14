@@ -8,10 +8,10 @@ import { useGetData } from '../custom-hooks/FetchData';
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: "ID", width: 90, hide: true },
-  { field: 'make', headerName: 'Contact Name', flex: 1 },
-  { field: 'model', headerName: 'Email', flex: 1},
-  { field: 'year', headerName: 'Phone Number', flex: 1},
-  { field: 'serial', headerName: 'Address', flex: 2}
+  { field: 'make', headerName: 'Make', flex: 1 },
+  { field: 'model', headerName: 'Model', flex: 1},
+  { field: 'year', headerName: 'Year', flex: 1},
+  { field: 'serial', headerName: 'Serial', flex: 2}
 ]
 
 function DataTable() {
