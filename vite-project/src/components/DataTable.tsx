@@ -16,7 +16,7 @@ const columns: GridColDef[] = [
 
 function DataTable() {
   const [ open, setOpen ] = useState(false);
-  const { contactData, getData } = useGetData();
+  const { contactData } = useGetData();
   const [ selectionModel, setSelectionModel ] = useState<string[]>([])
 
   const handleOpen = () => {
