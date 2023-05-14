@@ -4,10 +4,12 @@ import Navbar from './components/navbar'
 import { Provider } from 'react-redux'
 import { store } from './redux/store'
 import AuthChecker from './auth/AuthChecker'
+import Home from './pages/Home'
 
 function App() {
 
   return (
+  <>
   <BrowserRouter>
     <Navbar />
       <Provider store={store}>
@@ -30,6 +32,7 @@ function App() {
         </Routes>
       </Provider>
     </BrowserRouter>
+    </>
   )
 }
 

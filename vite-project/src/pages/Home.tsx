@@ -4,11 +4,11 @@ import Background from '../assets/images/background.jpg'
 function Home() {
   return (
     <div
-      
-      className='mydiv'
-      
+      style={{ backgroundImage: `url(${ Background })`}}
+      className='mydiv flex flex-row justify center mx-auto bg-cover bg-fixed'
        >
-          <h3></h3>
+          <div className='flex place-items-center h-screen'></div>
+          
         </div>
     
   )

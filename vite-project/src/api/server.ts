@@ -2,7 +2,7 @@ let token = '759d1a5a6e3c2f115bac6e015bdda57e0b48fdd4b3caee2c'
 
 export const server_calls = {
     get: async () => {
-        const response = await fetch(`http://candied-snapdragon-grouse.glitch.me/api/cars`,{
+        const response = await fetch(`https://candied-snapdragon-grouse.glitch.me/api/cars`,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ export const server_calls = {
     },
 
     create: async(data: any = {}) => {
-        const response = await fetch(`http://candied-snapdragon-grouse.glitch.me/api/cars`,{
+        const response = await fetch(`https://candied-snapdragon-grouse.glitch.me/api/cars`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -33,8 +33,8 @@ export const server_calls = {
 
         return await response.json()
     },
-    update: async (id:string, data:any = {}) => {
-        const response = await fetch(`http://candied-snapdragon-grouse.glitch.me/api/cars/${id}`, {
+    update: async (id:string[], data:any = {}) => {
+        const response = await fetch(`https://candied-snapdragon-grouse.glitch.me/api/cars/${id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -43,8 +43,8 @@ export const server_calls = {
             body: JSON.stringify(data)
         });
     },
-    delete: async(id:string) => {
-        const response = await fetch(`http://candied-snapdragon-grouse.glitch.me/api/cars/${id}`,{
+    delete: async(id:string[]) => {
+        const response = await fetch(`https://candied-snapdragon-grouse.glitch.me/api/cars/${id}`,{
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
